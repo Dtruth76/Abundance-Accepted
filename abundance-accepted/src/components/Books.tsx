@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 type Book = {
   title: string
   subtitle: string
@@ -75,3 +76,19 @@ export default function Books() {
     </section>
   )
 }
+=======
+[{
+	"resource": "/workspaces/abundance-accepted/abundance-accepted/src/components/Books.tsx",
+	"owner": "typescript",
+	"code": "17002",
+	"severity": 8,
+	"message": "Expected corresponding JSX closing tag for 'div'.",
+	"source": "ts",
+	"startLineNumber": 67,
+	"startColumn": 19,
+	"endLineNumber": 67,
+	"endColumn": 20,
+	"modelVersionId": 1020,
+	"origin": "extHost2"
+}]
+>>>>>>> 32fcdf7003305bdff4bf3f4cb2460e03a24b357a
