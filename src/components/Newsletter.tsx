@@ -1,16 +1,19 @@
-import { FormEvent, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function Newsletter() {
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const formContainerRef = useRef<HTMLDivElement>(null)
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    if (!email) return
-    // TODO: wire this up to your email provider (ConvertKit, Mailchimp, Beehiiv, etc.)
-    // or a serverless function before going live — this just confirms in the UI for now.
-    setSubmitted(true)
-  }
+  useEffect(() => {
+    if (!formContainerRef.current) return
+    // Avoid injecting the script twice on re-renders
+    if (formContainerRef.current.querySelector('script')) return
+
+    const script = document.createElement('script')
+    script.async = true
+    script.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js'
+    script.setAttribute('data-beehiiv-form', '19eca144-ba0b-47bc-b23b-830cffa0b377')
+    formContainerRef.current.appendChild(script)
+  }, [])
 
   return (
     <section id="newsletter" className="bg-ink-900 text-parchment">
@@ -23,29 +26,7 @@ export default function Newsletter() {
           One email, roughly twice a month. No fads, no spam — just what's working.
         </p>
 
-        {submitted ? (
-          <p className="mt-8 font-eyebrow text-sm uppercase tracking-[0.1em] text-gold-light">
-            You're on the list — welcome in.
-          </p>
-        ) : (
-          <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className="flex-1 rounded-full border border-parchment/20 bg-parchment/5 px-5 py-3 text-sm text-parchment placeholder:text-parchment/40 focus:border-gold-light focus:outline-none"
-            />
-            <button type="submit" className="btn-primary">
-              Join the List
-            </button>
-          </form>
-        )}
+        <div ref={formContainerRef} className="mx-auto mt-8 max-w-md" />
       </div>
     </section>
   )
