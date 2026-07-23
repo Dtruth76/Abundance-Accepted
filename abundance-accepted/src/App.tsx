@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Philosophy from './components/Philosophy'
@@ -45,6 +45,7 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/checkout-success" element={<CheckoutSuccess />} />
       <Route path="/checkout-cancelled" element={<CheckoutCancelled />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }
