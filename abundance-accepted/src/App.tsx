@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Philosophy from './components/Philosophy'
@@ -11,8 +12,10 @@ import Membership from './components/Membership'
 import AffiliateShop from './components/AffiliateShop'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
+import CheckoutSuccess from './pages/CheckoutSuccess'
+import CheckoutCancelled from './pages/CheckoutCancelled'
 
-export default function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-parchment">
       <Header />
@@ -33,5 +36,15 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/checkout-success" element={<CheckoutSuccess />} />
+      <Route path="/checkout-cancelled" element={<CheckoutCancelled />} />
+    </Routes>
   )
 }
