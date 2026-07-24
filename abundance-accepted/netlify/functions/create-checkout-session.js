@@ -12,11 +12,11 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const PRICE_IDS = {
   "abundance-plus": {
     monthly: "price_1TvT6bE1ZQ0yoHJiiRthasAQ",
-    annual: "price_REPLACE_WITH_ANNUAL_ABUNDANCE_PLUS",
+    annual: "price_1TwWeKE1ZQ0yoHJizc4V7dRB",
   },
   "vip-circle": {
     monthly: "price_1TvTRkE1ZQ0yoHJirsep9gQV",
-    annual: "price_REPLACE_WITH_ANNUAL_VIP_CIRCLE",
+    annual: "price_1TwWfWE1ZQ0yoHJiy4mzllbD",
   },
 };
 
